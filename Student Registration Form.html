@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIQUE SHIBLEE GROUP OF SCHOOLS AND COLLEGES MONGI-B</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ---------- Root Variables ---------- */
+        :root {
+            --primary: #f40103;   /* Coca-Cola Red */
+            --secondary: #8B0000; /* Dark Red */
+            --accent: #D4AF37;    /* Gold */
+            --dark: #2c3e50;
+            --light: #f8f8f8;
+            --form-bg: #ffffff;   /* White background */
+            --section-bg: #f0f0f0; /* Slightly darker section background */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --border: #e1e1e1;
+        }
+
+        /* ---------- Global Styles ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f9f9f9 0%, #e6e6e6 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 7px;
+            min-height: 100vh;
+        }
+
+        /* ---------- Form Container ---------- */
+        .form-container {
+            max-width: 1100px; /* Increased to accommodate wider inputs */
+            margin: 30px auto;
+            background: var(--form-bg);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        /* ---------- Form Header ---------- */
+        .form-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+
+        .form-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .school-logo {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .school-logo i {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        /* ---------- Form Content ---------- */
+        .form-content {
+            padding: 8px;
+        }
+
+        /* ---------- Form Sections ---------- */
+        .form-section {
+            background: var(--section-bg); /* Slightly darker background */
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            /* Removed the left border */
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .section-title i {
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+
+        .section-title h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        /* ---------- Form Grid ---------- */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Increased min width */
+            gap: 20px;
+        }
+
+        /* ---------- Form Fields ---------- */
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .form-field label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-field label i {
+            margin-right: 8px;
+            color: var(--primary);
+            width: 20px;
+        }
+
+        .input {
+            width: 133.33%; /* Increased width by 1/3 */
+            padding: 12px 15px;
+            border: 1.3px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+            color: var(--text-dark);
+        }
+
+        .input:focus {
+            border-color: red;
+            box-shadow: 0 0 0 3px rgba(244, 1, 3, 0.1);
+            outline: none ;
+        }
+
+        /* ---------- Gender / Radio & Checkbox ---------- */
+        .field-row {
+            display: flex;
+            gap: 15px;
+            margin-top: 5px;
+            align-items: center;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .radio-item input[type="radio"] {
+            accent-color: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* ---------- File Upload Section ---------- */
+        .file-upload-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .file-input-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .file-preview {
+            margin-top: 10px;
+            max-width: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            display: none;
+        }
+
+        .file-preview img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 5px;
+            height: 8px;
+        }
+
+        .progress-bar {
+            width: 1%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            transition: width 0.3s ease;
+            border-radius: 5px;
+        }
+
+        /* ---------- Buttons ---------- */
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn {
+            padding: 14px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(244, 1, 3, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(244, 1, 3, 0.4);
+        }
+
+        .btn-ghost {
+            background-color: transparent;
+            color: var(--text-dark);
+            border: 1.5px solid var(--border);
+        }
+
+        .btn-ghost:hover {
+            background-color: #f5f5f5;
+            border-color: var(--primary);
+        }
+
+        /* ---------- Select Elements ---------- */
+        select.input {
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23f40103' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 16px;
+            appearance: none;
+            padding-right: 40px;
+        }
+
+        /* ---------- Success Message ---------- */
+        .success-message {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .input {
+                width: 100%; /* Full width on mobile */
+            }
+            
+            .form-actions {
+                flex-direction: column;
+            }
+            
+            .field-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .file-input-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        /* ---------- Custom Scrollbar ---------- */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+        
+        /* ---------- Form Tips ---------- */
+        .form-tips {
+            background: #e8f4fd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            border-left: 4px solid #2196F3;
+        }
+        
+        .form-tips h3 {
+            color: #2196F3;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .form-tips ul {
+            padding-left: 20px;
+        }
+        
+        .form-tips li {
+            margin-bottom: 8px;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-header">
+            <div class="school-logo">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h1>Student Registration Form</h1>
+            <p>UNIQUE SHIBLEE GROUP OF SCHOOLS AND COLLEGES MONGI-BANGLA</p>
+        </div>
+
+        <div class="form-content">
+            <form action="#" name="StudentRegistration" onsubmit="return validate();">
+                <!-- Personal Information Section -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <i class="fas fa-user-graduate"></i>
+                        <h2>Personal Information</h2>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label for="studentName"><i class="fas fa-user"></i> Student Name</label>
+                            <input type="text" id="studentName" class="input" placeholder="Enter full name" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="fatherName"><i class="fas fa-user-friends"></i> Father Name</label>
+                            <input type="text" id="fatherName" class="input" placeholder="Enter father's name" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="phoneNumber"><i class="fas fa-phone"></i> Phone Number</label>
+                            <input type="text" id="phoneNumber" class="input" placeholder="Enter phone number" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="dob"><i class="fas fa-calendar-alt"></i> Date Of Birth</label>
+                            <input type="date" id="dob" class="input" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label><i class="fas fa-venus-mars"></i> Gender</label>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="male" name="sex" value="male" checked>
+                                    <label for="male">Male</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="female" name="sex" value="female">
+                                    <label for="female">Female</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="email"><i class="fas fa-envelope"></i> E-mail ID</label>
+                            <input type="email" id="email" class="input" placeholder="Enter email address">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic Information Section -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <i class="fas fa-book-open"></i>
+                        <h2>Academic Information</h2>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label for="classSection"><i class="fas fa-chalkboard"></i> Class And Section</label>
+                            <select id="classSection" class="input" required>
+                                <option value="" selected disabled>Select Class</option>
+                                <option value="PREP">PREP</option>
+                                <option value="ONE">ONE</option>
+                                <option value="TWO">TWO</option>
+                                <option value="THREE">THREE</option>
+                                <option value="FOUR">FOUR</option>
+                                <option value="FIVE">FIVE</option>
+                                <option value="6th">6<sup>th</sup></option>
+                                <option value="7th">7<sup>th</sup></option>
+                                <option value="8th">8<sup>th</sup></option>
+                                <option value="9th">9<sup>th</sup></option>
+                                <option value="10th">10<sup>th</sup></option>
+                                <option value="OTHERS">Others</option>
+                            </select>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="otherClass"><i class="fas fa-edit"></i> Other Class (if applicable)</label>
+                            <input type="text" id="otherClass" class="input" placeholder="Specify other class" disabled>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="course"><i class="fas fa-graduation-cap"></i> Course</label>
+                            <select id="course" class="input" required>
+                                <option value="" selected disabled>Select Course</option>
+                                <option value="General Science">General Science</option>
+                                <option value="Biology Group">Biology Group</option>
+                                <option value="Computer Group">Computer Group</option>
+                                <option value="OTHERS">Others</option>
+                            </select>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="otherCourse"><i class="fas fa-edit"></i> Other Course (if applicable)</label>
+                            <input type="text" id="otherCourse" class="input" placeholder="Specify other course" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Address Information Section -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <i class="fas fa-home"></i>
+                        <h2>Address Information</h2>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label for="address"><i class="fas fa-map-marker-alt"></i> Residential Address</label>
+                            <select id="address" class="input" required>
+                                <option value="" selected disabled>Select Address</option>
+                                <option value="Chak No. 243 G.B">Chak No. 243 G.B</option>
+                                <option value="Chak No. 244 G.B">Chak No. 244 G.B</option>
+                                <option value="Chak No. 245 G.B">Chak No. 245 G.B</option>
+                                <option value="Chak No. 246 G.B">Chak No. 246 G.B</option>
+                                <option value="Mongi Banlow">Mongi Banglow</option>
+                                <option value="OTHERS">Others</option>
+                            </select>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="otherAddress"><i class="fas fa-edit"></i> Other Address (if applicable)</label>
+                            <input type="text" id="otherAddress" class="input" placeholder="Specify other address" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Documents & Payment Section -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <i class="fas fa-file-upload"></i>
+                        <h2>Pay Fees Online </h2>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-field file-upload-section">
+                            <label for="photo"><i class="fas fa-camera"></i> Attach Photo of payment reciept </label>
+                            <div class="file-input-container">
+                                <input type="file" id="photo" class="input" accept="image/*">
+                                <button type="button" class="btn btn-ghost" onclick="move()">
+                                    <i class="fas fa-upload"></i> UPLOAD
+                                </button>
+                            </div>
+                            <div class="progress-container">
+                                <div id="myBar" class="progress-bar"></div>
+                            </div>
+                            <div class="file-preview" id="photoPreview"></div>
+                        </div>
+
+                        <div class="form-field file-upload-section">
+                            <label for="paymentScreenshot"><i class="fas fa-receipt"></i> Upload Your Photo
+                            
+                            
+                          </label>
+                            <div class="file-input-container">
+                                <input type="file" id="paymentScreenshot" class="input" accept="image/*">
+                                <button type="button" class="btn btn-ghost" onclick="uploadPaymentScreenshot()">
+                                    <i class="fas fa-upload"></i> UPLOAD
+                                </button>
+                            </div>
+                            <div class="file-preview" id="paymentPreview"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Tips -->
+                <div class="form-tips">
+                    <h3><i class="fas fa-lightbulb"></i> Important Information</h3>
+                    <ul>
+                        <li>All fields marked with * are required</li>
+                        <li>Ensure your photo is clear and recent</li>
+                        <li>Upload a clear screenshot of your payment confirmation</li>
+                        <li>After submission, you will receive a confirmation email</li>
+                        <li>EasyPaisa , JazzCash & UPaisa No:  +92 346 7711243 </li>
+                        <li>Contact Us: +923467711243</li>
+                    </ul>
+                </div>
+
+                <!-- Success Message -->
+                <div id="successMessage" class="success-message">
+                    <h3><i class="fas fa-check-circle"></i> Form Submitted Successfully!</h3>
+                    <p>After confirmation of your fees, an "Admission Confirmed" message will be sent to you.</p>
+                    <p>If you have any issues, please contact us:</p>
+                    <p><strong>Phone: +92 346 7711243</strong></p>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form-actions">
+                    <button type="reset" class="btn btn-ghost">
+                        <i class="fas fa-redo"></i> Reset Form
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Submit Form
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Progress bar animation
+        let i = 0;
+        function move() {
+            if (i === 0) {
+                i = 1;
+                const elem = document.getElementById("myBar");
+                let width = 1;
+                const id = setInterval(frame, 20);
+                function frame() {
+                    if (width >= 100) {
+                        clearInterval(id);
+                        i = 0;
+                        // Show preview after upload
+                        const fileInput = document.getElementById('photo');
+                        if (fileInput.files && fileInput.files[0]) {
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                const preview = document.getElementById('photoPreview');
+                                preview.innerHTML = `<img src="${e.target.result}" alt="Photo Preview">`;
+                                preview.style.display = 'block';
+                            }
+                            reader.readAsDataURL(fileInput.files[0]);
+                        }
+                    } else {
+                        width++;
+                        elem.style.width = width + "%";
+                    }
+                }
+            }
+        }
+
+        // Payment screenshot upload
+        function uploadPaymentScreenshot() {
+            const fileInput = document.getElementById('paymentScreenshot');
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('paymentPreview');
+                    preview.innerHTML = `<img src="${e.target.result}" alt="Payment Screenshot Preview">`;
+                    preview.style.display = 'block';
+                }
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        }
+
+        // Enable/disable other input fields based on selection
+        document.addEventListener('DOMContentLoaded', function() {
+            // Class section
+            const classSection = document.getElementById('classSection');
+            const otherClass = document.getElementById('otherClass');
+            
+            classSection.addEventListener('change', function() {
+                if (this.value === 'OTHERS') {
+                    otherClass.disabled = false;
+                    otherClass.required = true;
+                } else {
+                    otherClass.disabled = true;
+                    otherClass.required = false;
+                    otherClass.value = '';
+                }
+            });
+            
+            // Course
+            const course = document.getElementById('course');
+            const otherCourse = document.getElementById('otherCourse');
+            
+            course.addEventListener('change', function() {
+                if (this.value === 'OTHERS') {
+                    otherCourse.disabled = false;
+                    otherCourse.required = true;
+                } else {
+                    otherCourse.disabled = true;
+                    otherCourse.required = false;
+                    otherCourse.value = '';
+                }
+            });
+            
+            // Address
+            const address = document.getElementById('address');
+            const otherAddress = document.getElementById('otherAddress');
+            
+            address.addEventListener('change', function() {
+                if (this.value === 'OTHERS') {
+                    otherAddress.disabled = false;
+                    otherAddress.required = true;
+                } else {
+                    otherAddress.disabled = true;
+                    otherAddress.required = false;
+                    otherAddress.value = '';
+                }
+            });
+
+            // File input preview for photo
+            document.getElementById('photo').addEventListener('change', function() {
+                document.getElementById('myBar').style.width = '1%';
+                document.getElementById('photoPreview').style.display = 'none';
+            });
+
+            // File input preview for payment screenshot
+            document.getElementById('paymentScreenshot').addEventListener('change', function() {
+                document.getElementById('paymentPreview').style.display = 'none';
+            });
+        });
+
+        // Form validation function
+        function validate() {
+            // Basic validation
+            const requiredFields = document.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.borderColor = 'red';
+                } else {
+                    field.style.borderColor = '';
+                }
+            });
+            
+            if (!isValid) {
+                alert('Please fill in all required fields.');
+                return false;
+            }
+            
+            // If validation passes, show success message
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Scroll to success message
+            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+            
+            // Prevent actual form submission for demo
+            return false;
+        }
+    </script>
+</body>
+</html>
