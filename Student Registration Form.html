@@ -39,7 +39,7 @@
         /* ---------- Form Container ---------- */
         .form-container {
             max-width: 1100px; /* Increased to accommodate wider inputs */
-            margin: 30px auto;
+            margin: 0px auto;
             background: var(--form-bg);
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -50,7 +50,7 @@
         .form-header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            padding: 30px;
+            padding: 0px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -314,6 +314,18 @@
             box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
         }
 
+        /* ---------- Error Message ---------- */
+        .error-message {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
         /* ---------- Responsive ---------- */
         @media (max-width: 768px) {
             .form-grid {
@@ -391,17 +403,17 @@
             <div class="school-logo">
                 <i class="fas fa-graduation-cap"></i>
             </div>
-            <h1>Student Registration Form</h1>
-            <p>UNIQUE SHIBLEE GROUP OF SCHOOLS AND COLLEGES MONGI-BANGLA</p>
+            <h2>Student Registration Form</h2>
+            <p>UNIQUE SHIBLEE GROUP OF SCHOOLS AND COLLEGES </br>MONGI-BANGLA</p>
         </div>
 
         <div class="form-content">
-            <form action="#" name="StudentRegistration" onsubmit="return validate();">
+            <form action="#" name="StudentRegistration" id="registrationForm" onsubmit="return validate();">
                 <!-- Personal Information Section -->
                 <div class="form-section">
                     <div class="section-title">
                         <i class="fas fa-user-graduate"></i>
-                        <h2>Personal Information</h2>
+                        <h3>Personal Information</h3>
                     </div>
                     
                     <div class="form-grid">
@@ -450,7 +462,7 @@
                 <div class="form-section">
                     <div class="section-title">
                         <i class="fas fa-book-open"></i>
-                        <h2>Academic Information</h2>
+                        <h3>Academic Information</h3>
                     </div>
                     
                     <div class="form-grid">
@@ -500,7 +512,7 @@
                 <div class="form-section">
                     <div class="section-title">
                         <i class="fas fa-home"></i>
-                        <h2>Address Information</h2>
+                        <h3>Address Information</h3>
                     </div>
                     
                     <div class="form-grid">
@@ -528,7 +540,7 @@
                 <div class="form-section">
                     <div class="section-title">
                         <i class="fas fa-file-upload"></i>
-                        <h2>Pay Fees Online </h2>
+                        <h3>Pay Fees Online </h3>
                     </div>
                     
                     <div class="form-grid">
@@ -547,10 +559,7 @@
                         </div>
 
                         <div class="form-field file-upload-section">
-                            <label for="paymentScreenshot"><i class="fas fa-receipt"></i> Upload Your Photo
-                            
-                            
-                          </label>
+                            <label for="paymentScreenshot"><i class="fas fa-receipt"></i> Upload Your Photo</label>
                             <div class="file-input-container">
                                 <input type="file" id="paymentScreenshot" class="input" accept="image/*">
                                 <button type="button" class="btn btn-ghost" onclick="uploadPaymentScreenshot()">
@@ -572,20 +581,39 @@
                         <li>After submission, you will receive a confirmation email</li>
                         <li>EasyPaisa , JazzCash & UPaisa No:  +92 346 7711243 </li>
                         <li>Contact Us: +923467711243</li>
+                        <h3>Fees Schedule</h3>
+                        <li>Class One   = Rs. 1000</li>
+<li>Class Two   = Rs. 2000</li>
+<li>Class Three = Rs. 3000</li>
+<li>Class Four  = Rs. 4000 </li>
+<li>Class Five  = Rs. 5000</li>
+<li>Class Six.  = Rs. 6000 </li>
+<li>Class Seven = Rs. 7000</li>
+<li>Class Eight = Rs. 8000</li>
+<li>Class Nine  = Rs. 9000</li>
+<li>Class Ten   = Rs. 10000</li>                       
                     </ul>
                 </div>
 
                 <!-- Success Message -->
                 <div id="successMessage" class="success-message">
                     <h3><i class="fas fa-check-circle"></i> Form Submitted Successfully!</h3>
-                    <p>After confirmation of your fees, an "Admission Confirmed" message will be sent to you.</p>
+                    <p>After confirmation of your fees, an "Admission Confirmed" e-mail message will be sent to you.</p>
                     <p>If you have any issues, please contact us:</p>
+                    <p><strong>Phone: +92 346 7711243</strong></p>
+                </div>
+
+                <!-- Error Message -->
+                <div id="errorMessage" class="error-message">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Already Registered!</h3>
+                    <p>You have already registered with this phone number or email.</p>
+                    <p>If you think this is an error, please contact us:</p>
                     <p><strong>Phone: +92 346 7711243</strong></p>
                 </div>
 
                 <!-- Form Actions -->
                 <div class="form-actions">
-                    <button type="reset" class="btn btn-ghost">
+                    <button type="reset" class="btn btn-ghost" id="resetBtn">
                         <i class="fas fa-redo"></i> Reset Form
                     </button>
                     <button type="submit" class="btn btn-primary">
@@ -597,6 +625,36 @@
     </div>
 
     <script>
+        // Storage for registered students (using localStorage for persistence)
+        const STORAGE_KEY = 'registeredStudents';
+        
+        // Initialize storage if not exists
+        function initializeStorage() {
+            if (!localStorage.getItem(STORAGE_KEY)) {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify([]));
+            }
+        }
+        
+        // Get all registered students
+        function getRegisteredStudents() {
+            return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        }
+        
+        // Add a student to registered list
+        function addRegisteredStudent(studentData) {
+            const students = getRegisteredStudents();
+            students.push(studentData);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(students));
+        }
+        
+        // Check if student is already registered
+        function isStudentRegistered(phone, email) {
+            const students = getRegisteredStudents();
+            return students.some(student => 
+                student.phone === phone || student.email === email
+            );
+        }
+
         // Progress bar animation
         let i = 0;
         function move() {
@@ -642,8 +700,35 @@
             }
         }
 
+        // Reset form function - clears all form data including images
+        function resetForm() {
+            // Clear all input fields
+            document.getElementById('registrationForm').reset();
+            
+            // Clear image previews
+            document.getElementById('photoPreview').innerHTML = '';
+            document.getElementById('photoPreview').style.display = 'none';
+            document.getElementById('paymentPreview').innerHTML = '';
+            document.getElementById('paymentPreview').style.display = 'none';
+            
+            // Reset progress bar
+            document.getElementById('myBar').style.width = '1%';
+            
+            // Hide messages
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('errorMessage').style.display = 'none';
+            
+            // Reset disabled fields
+            document.getElementById('otherClass').disabled = true;
+            document.getElementById('otherCourse').disabled = true;
+            document.getElementById('otherAddress').disabled = true;
+        }
+
         // Enable/disable other input fields based on selection
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize storage
+            initializeStorage();
+            
             // Class section
             const classSection = document.getElementById('classSection');
             const otherClass = document.getElementById('otherClass');
@@ -699,10 +784,19 @@
             document.getElementById('paymentScreenshot').addEventListener('change', function() {
                 document.getElementById('paymentPreview').style.display = 'none';
             });
+
+            // Reset button handler
+            document.getElementById('resetBtn').addEventListener('click', resetForm);
         });
 
         // Form validation function
         function validate() {
+            // Get form values
+            const studentName = document.getElementById('studentName').value.trim();
+            const fatherName = document.getElementById('fatherName').value.trim();
+            const phoneNumber = document.getElementById('phoneNumber').value.trim();
+            const email = document.getElementById('email').value.trim();
+            
             // Basic validation
             const requiredFields = document.querySelectorAll('[required]');
             let isValid = true;
@@ -721,11 +815,38 @@
                 return false;
             }
             
-            // If validation passes, show success message
+            // Check if student is already registered
+            if (isStudentRegistered(phoneNumber, email)) {
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('errorMessage').scrollIntoView({ behavior: 'smooth' });
+                return false;
+            }
+            
+            // If validation passes and not a duplicate, register the student
+            const studentData = {
+                name: studentName,
+                fatherName: fatherName,
+                phone: phoneNumber,
+                email: email,
+                dob: document.getElementById('dob').value,
+                class: document.getElementById('classSection').value,
+                course: document.getElementById('course').value,
+                address: document.getElementById('address').value,
+                registrationDate: new Date().toISOString()
+            };
+            
+            addRegisteredStudent(studentData);
+            
+            // Show success message
             document.getElementById('successMessage').style.display = 'block';
             
             // Scroll to success message
             document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+            
+            // Reset form after successful submission
+            setTimeout(() => {
+                resetForm();
+            }, 5000);
             
             // Prevent actual form submission for demo
             return false;
