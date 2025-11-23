@@ -641,14 +641,14 @@
     
     // Product database
     const products = {
-      '4000011010101': { name: 'Ice Cream 2-Scope', price: 150 },
-      '8000000001239': { name: 'Pulao', price: 300 },
-      '30000': { name: 'Soup', price: 46.60 },
-      '8003700001010': { name: 'RIG LITTLE FARM EA', price: 4.00 },
-      '1234567890': { name: 'Chicken Biryani', price: 180 },
-      '5555555555': { name: 'Mutton Karahi', price: 350 },
-      '7777777777': { name: 'Fruit Chat', price: 120 },
-      '8888888888': { name: 'Cold Drink', price: 60 }
+      '100020003000': { name: 'Ice Cream 2-Scope', price: 150 },
+      '': { name: 'Pulao', price: 300 },
+      '100020003001': { name: 'Soup', price: 150.00 },
+      '100020003002': { name: 'Pulao', price: 300.00 },
+      '100020003003': { name: 'Chicken Biryani', price: 400.00 },
+      '100020003004': { name: 'Mutton Karahi', price: 3000.00 },
+      '100020003005': { name: 'Fruit Chat', price: 120 },
+      '100020003006': { name: 'Cold Drink', price: 60 }
     };
     
     // Initialize the table
@@ -657,10 +657,10 @@
       
       // Sample data
       const sampleData = [
-        { code: '4000011010101', name: 'Ice Cream 2-Scope', price: 150, qty: 3, discount: 8.35, total: 441.65 },
-        { code: '8000000001239', name: 'Pulao', price: 300, qty: 2, discount: 2.95, total: 597.05 },
-        { code: '1234567890', name: 'Chicken Biryani', price: 180, qty: 1, discount: 15.80, total: 164.20 },
-        { code: '8003700001010', name: 'RIG LITTLE FARM EA', price: 4.00, qty: 1, discount: 13.80, total: -9.80 }
+        { code: '100020003000', name: 'Ice Cream 2-Scope', price: 150.00, qty: 3, discount: 8.35, total: 441.65 },
+        { code: '100020003001', name: 'Pulao', price: 300.00, qty: 2, discount: 2.95, total: 597.05 },
+        { code: '100020003002', name: 'Chicken Biryani', price: 400.00, qty: 1, discount: 15.80, total: 164.20 },
+        { code: '100020003003', name: 'Mutton Karahi', price: 3000.00, qty: 1, discount: 13.80, total: -9.80 }
       ];
       
       sampleData.forEach(item => {
